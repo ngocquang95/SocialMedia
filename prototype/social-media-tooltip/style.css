@@ -1,0 +1,167 @@
+body {
+  background: #18191A;
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.title span {
+  color: #2196f3;
+}
+.title .bar {
+  display: inline-block;
+  width: 5px;
+  height: 36px;
+  background: #2196f3;
+  margin-right: 12px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+.social-list {
+  display: flex;
+  gap: 32px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.social-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.social-btn {
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+  font-size: 2rem;
+  color: #222;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+.social-btn:hover {
+  transform: translateY(-10px) scale(1.12);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+}
+.social-btn {
+  text-decoration: none !important;
+}
+.social-btn.facebook { color: #1877f3; }
+.social-btn.youtube { color: #fff; background: #ff0000; }
+.social-btn.tiktok { color: #000; }
+.social-btn.twitter { color: #1da1f2; }
+.social-btn.whatsapp { color: #25d366; }
+.social-btn.zalo { color: #0068ff; background: #fff; }
+.tooltip {
+  position: absolute;
+  top: -64px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  min-width: 90px;
+  background: #222;
+  color: #fff;
+  padding: 8px 22px 8px 22px;
+  border-radius: 22px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s, transform 0.22s;
+  white-space: nowrap;
+  z-index: 2;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border-width: 8px 10px 0 10px;
+  border-style: solid;
+  border-color: #222 transparent transparent transparent;
+}
+.social-item.facebook .tooltip {
+  background: #1877f3;
+}
+.social-item.facebook .tooltip::after {
+  border-color: #1877f3 transparent transparent transparent;
+}
+.social-item.youtube .tooltip {
+  background: #ff0000;
+}
+.social-item.youtube .tooltip::after {
+  border-color: #ff0000 transparent transparent transparent;
+}
+.social-item.tiktok .tooltip {
+  background: #000;
+}
+.social-item.tiktok .tooltip::after {
+  border-color: #000 transparent transparent transparent;
+}
+.social-item.twitter .tooltip {
+  background: #1da1f2;
+}
+.social-item.twitter .tooltip::after {
+  border-color: #1da1f2 transparent transparent transparent;
+}
+.social-item.whatsapp .tooltip {
+  background: #25d366;
+}
+.social-item.whatsapp .tooltip::after {
+  border-color: #25d366 transparent transparent transparent;
+}
+.social-item.zalo .tooltip {
+  background: #0068ff;
+}
+.social-item.zalo .tooltip::after {
+  border-color: #0068ff transparent transparent transparent;
+}
+.social-btn:hover + .tooltip,
+.social-btn:focus + .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+  .social-list {
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+  .social-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  .tooltip {
+    font-size: 0.95rem;
+    min-width: 60px;
+    padding: 6px 12px;
+    top: -44px;
+  }
+} 

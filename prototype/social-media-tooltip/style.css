@@ -113,11 +113,15 @@ body {
 .social-item.youtube .tooltip::after {
   border-color: #ff0000 transparent transparent transparent;
 }
+/* Sửa tooltip TikTok cho dark mode */
 .social-item.tiktok .tooltip {
-  background: #000;
+  background: #23272b;
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
 }
 .social-item.tiktok .tooltip::after {
-  border-color: #000 transparent transparent transparent;
+  border-color: #23272b transparent transparent transparent;
 }
 .social-item.twitter .tooltip {
   background: #1da1f2;
@@ -164,4 +168,96 @@ body {
     padding: 6px 12px;
     top: -44px;
   }
+}
+/* Light theme styles */
+body.light-theme {
+  background: #f4f6fb;
+}
+body.light-theme .title {
+  color: #222;
+}
+body.light-theme .title span {
+  color: #1976d2;
+}
+body.light-theme .title .bar {
+  background: #1976d2;
+}
+body.light-theme .social-btn {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06), 0 1.5px 4px rgba(0,0,0,0.04);
+}
+body.light-theme .social-btn.facebook { color: #1877f3; }
+body.light-theme .social-btn.youtube { color: #fff; background: #ff0000; }
+body.light-theme .social-btn.tiktok { color: #000; }
+body.light-theme .social-btn.twitter { color: #1da1f2; }
+body.light-theme .social-btn.whatsapp { color: #25d366; }
+body.light-theme .social-btn.zalo { color: #0068ff; background: #fff; }
+body.light-theme .tooltip {
+  background: #e3e6ee;
+  color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+body.light-theme .tooltip::after {
+  border-color: #e3e6ee transparent transparent transparent;
+}
+body.light-theme .social-item.facebook .tooltip {
+  background: #e3f0ff;
+  color: #1877f3;
+}
+body.light-theme .social-item.facebook .tooltip::after {
+  border-color: #e3f0ff transparent transparent transparent;
+}
+body.light-theme .social-item.youtube .tooltip {
+  background: #ffe3e3;
+  color: #ff0000;
+}
+body.light-theme .social-item.youtube .tooltip::after {
+  border-color: #ffe3e3 transparent transparent transparent;
+}
+/* Light theme: tooltip TikTok vẫn giữ màu sáng */
+body.light-theme .social-item.tiktok .tooltip {
+  background: #f0f0f0;
+  color: #000;
+}
+body.light-theme .social-item.tiktok .tooltip::after {
+  border-color: #f0f0f0 transparent transparent transparent;
+}
+body.light-theme .social-item.twitter .tooltip {
+  background: #e3f4ff;
+  color: #1da1f2;
+}
+body.light-theme .social-item.twitter .tooltip::after {
+  border-color: #e3f4ff transparent transparent transparent;
+}
+body.light-theme .social-item.whatsapp .tooltip {
+  background: #e3ffe9;
+  color: #25d366;
+}
+body.light-theme .social-item.whatsapp .tooltip::after {
+  border-color: #e3ffe9 transparent transparent transparent;
+}
+body.light-theme .social-item.zalo .tooltip {
+  background: #e3f0ff;
+  color: #0068ff;
+}
+body.light-theme .social-item.zalo .tooltip::after {
+  border-color: #e3f0ff transparent transparent transparent;
+}
+.theme-toggle-wrapper {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 10;
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+}
+body.light-theme #theme-toggle {
+  color: #222;
 } 

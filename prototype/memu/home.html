@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectacular Navigation Menu</title>
+    <meta name="description" content="Menu điều hướng đẹp mắt với hiệu ứng animation và responsive design">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-brand">
+                    <a href="#" class="brand-link" aria-label="Trang chủ">
+                        <div class="logo">
+                            <span class="logo-text">SPECTACULAR</span>
+                            <div class="logo-dot"></div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">Trang chủ</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown" role="none">
+                        <a href="#" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Sản phẩm
+                            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">Web Design</a>
+                            </li>
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">Mobile Apps</a>
+                            </li>
+                            <li class="dropdown-submenu" role="none">
+                                <a href="#" class="dropdown-link submenu-toggle" role="menuitem" aria-haspopup="true">
+                                    Development
+                                    <svg class="submenu-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <ul class="submenu" role="menu">
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">Frontend</a></li>
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">Backend</a></li>
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">Full Stack</a></li>
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">DevOps</a></li>
+                                </ul>
+                            </li>
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">UI/UX Design</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" role="none">
+                        <a href="#" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Dịch vụ
+                            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">Tư vấn</a>
+                            </li>
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">Thiết kế</a>
+                            </li>
+                            <li class="dropdown-submenu" role="none">
+                                <a href="#" class="dropdown-link submenu-toggle" role="menuitem" aria-haspopup="true">
+                                    Marketing
+                                    <svg class="submenu-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <ul class="submenu" role="menu">
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">SEO</a></li>
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">Social Media</a></li>
+                                    <li role="none"><a href="#" class="submenu-link" role="menuitem">Content Marketing</a></li>
+                                </ul>
+                            </li>
+                            <li role="none">
+                                <a href="#" class="dropdown-link" role="menuitem">Hỗ trợ</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">Về chúng tôi</a>
+                    </li>
+
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">Liên hệ</a>
+                    </li>
+                </ul>
+
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="nav-controls">
+                    <button class="theme-toggle" aria-label="Chuyển đổi theme sáng/tối" title="Chuyển đổi theme">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+
+                    <button class="mobile-toggle" aria-label="Mở/đóng menu mobile" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-overlay"></div>
+        </nav>
+    </header>
+
+    <!-- Demo Content -->
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Spectacular Navigation Menu</h1>
+                <p>Menu điều hướng đẹp mắt với hiệu ứng animation mượt mà và responsive design hoàn hảo.</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <span class="feature-icon">✨</span>
+                        <span>Animation mượt mà</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📱</span>
+                        <span>Responsive hoàn hảo</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌙</span>
+                        <span>Dark/Light Mode</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <span>SEO Friendly</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -12,6 +12,7 @@ console = Console()
 
 # lyrics sẽ được gán động từ main.py
 lyrics = {}
+song_title = ""  # Thêm biến toàn cục để nhận title
 
 def format_time(ms):
     seconds = int(ms // 1000)
@@ -71,7 +72,7 @@ def create_karaoke_layout(current_time):
     )
     # Header
     title_text = Text("🎵 KARAOKE PLAYER", style="bold cyan", justify="center")
-    subtitle_text = Text("", style="italic cyan", justify="center")
+    subtitle_text = Text(song_title, style="italic cyan", justify="center")  # Sửa dòng này để lấy title
     time_text = Text(f"⏰ {format_time(current_time)} / {format_time(total_duration)}", style="yellow", justify="center")
     header_content = Layout()
     header_content.split_column(

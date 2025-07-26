@@ -111,6 +111,7 @@ def main():
         import importlib
         karaoke = importlib.import_module('karaoke.karaoke')
         karaoke.lyrics = lyrics
+        karaoke.song_title = selected['title']  # Truyền title sang karaoke.py
         karaoke.main()
     else:
         console.print('[bold red]Không tìm thấy lyrics trong file![/bold red]')

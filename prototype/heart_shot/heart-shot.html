@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Shot - Romantic Webpage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sparkling effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cute bear with animation */
+        .bear {
+            position: absolute;
+            left: 10%;
+            bottom: 20%;
+            width: 120px;
+            height: 120px;
+            z-index: 10;
+            animation: bearBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bearBounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            25% { transform: translateY(-8px) scale(1.02); }
+            50% { transform: translateY(-12px) scale(1.05); }
+            75% { transform: translateY(-6px) scale(1.03); }
+        }
+
+        .bear svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Animation for bear parts */
+        .bear-ear {
+            animation: earWiggle 3s ease-in-out infinite;
+        }
+
+        .bear-ear:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes earWiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-8deg) scale(1.1); }
+            50% { transform: rotate(0deg) scale(1.05); }
+            75% { transform: rotate(8deg) scale(1.1); }
+        }
+
+        .bear-eye {
+            animation: eyeBlink 4s ease-in-out infinite;
+        }
+
+        @keyframes eyeBlink {
+            0%, 85%, 100% { transform: scaleY(1) scaleX(1); }
+            90% { transform: scaleY(0.05) scaleX(1.2); }
+            95% { transform: scaleY(0.1) scaleX(0.8); }
+        }
+
+        .bear-mouth {
+            animation: mouthSmile 2s ease-in-out infinite;
+        }
+
+        @keyframes mouthSmile {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(1deg); }
+            50% { transform: scale(1.1) rotate(0deg); }
+            75% { transform: scale(1.05) rotate(-1deg); }
+        }
+
+        /* Heart shooting gun with more realistic animation */
+        .gun {
+            animation: gunShoot 0.2s ease-in-out infinite;
+        }
+
+        @keyframes gunShoot {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(-8px) rotate(-2deg); }
+            50% { transform: translateX(-3px) rotate(1deg); }
+            75% { transform: translateX(-6px) rotate(-1deg); }
+        }
+
+        /* Small hearts */
+        .small-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 5;
+            transition: all 0.3s ease;
+            /* Draw heart shape using CSS */
+            background: none;
+        }
+        .small-heart::before,
+        .small-heart::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 18px;
+            background: #ff4757;
+            border-radius: 12px 12px 0 0;
+            top: 0;
+            left: 4px;
+        }
+        .small-heart::after {
+            left: auto;
+            right: 4px;
+        }
+        .small-heart::before {
+            transform: rotate(-45deg);
+        }
+        .small-heart::after {
+            transform: rotate(45deg);
+        }
+        .small-heart {
+            /* Create bottom part of heart */
+            background: #ff4757;
+            transform: rotate(-45deg);
+        }
+
+        /* Big heart created from small hearts */
+        .big-heart-container {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+
+        .big-heart-slot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .big-heart-slot.filled {
+            opacity: 1;
+        }
+
+        /* Text "I love you" */
+        .love-text {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            z-index: 15;
+        }
+
+        .love-text.show {
+            opacity: 1;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 71, 87, 0.8); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bear {
+                width: 80px;
+                height: 80px;
+                left: 5%;
+                bottom: 15%;
+            }
+
+            .big-heart-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .love-text {
+                font-size: 1.8rem;
+                bottom: 10%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bear {
+                width: 60px;
+                height: 60px;
+                left: 3%;
+                bottom: 10%;
+            }
+
+            .big-heart-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .love-text {
+                font-size: 1.4rem;
+                bottom: 8%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cute bear with animation -->
+        <div class="bear">
+            <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Round chubby bear body -->
+                <ellipse cx="50" cy="65" rx="32" ry="35" fill="#A0522D" stroke="#8B4513" stroke-width="1.5"/>
+                
+                <!-- Cute round bear head -->
+                <circle cx="50" cy="35" r="28" fill="#A0522D" stroke="#8B4513" stroke-width="1.5"/>
+                
+                <!-- Small round bear ears with animation -->
+                <circle class="bear-ear" cx="32" cy="18" r="10" fill="#A0522D" stroke="#8B4513" stroke-width="1"/>
+                <circle class="bear-ear" cx="68" cy="18" r="10" fill="#A0522D" stroke="#8B4513" stroke-width="1"/>
+                
+                <!-- Small oval bear eyes with animation -->
+                <ellipse class="bear-eye" cx="42" cy="32" rx="2.5" ry="3.5" fill="#000"/>
+                <ellipse class="bear-eye" cx="58" cy="32" rx="2.5" ry="3.5" fill="#000"/>
+                
+                <!-- Small black bear nose -->
+                <ellipse cx="50" cy="38" rx="1.5" ry="1" fill="#000"/>
+                
+                <!-- Cute pink cheeks -->
+                <circle cx="32" cy="42" r="4" fill="#FFB6C1" opacity="0.8"/>
+                <circle cx="68" cy="42" r="4" fill="#FFB6C1" opacity="0.8"/>
+                
+                <!-- Small mouth with animation -->
+                <path class="bear-mouth" d="M 46 45 Q 50 48 54 45" stroke="#000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                
+                <!-- Tay cầm súng -->
+                <ellipse cx="75" cy="50" rx="8" ry="12" fill="#A0522D" stroke="#8B4513" stroke-width="1"/>
+                <ellipse cx="78" cy="55" rx="6" ry="10" fill="#A0522D" stroke="#8B4513" stroke-width="1"/>
+                
+                <!-- Súng bắn tim với animation -->
+                <rect class="gun" x="80" y="42" width="20" height="10" rx="5" fill="#C0C0C0" stroke="#696969" stroke-width="1"/>
+                <rect class="gun" x="100" y="44" width="8" height="6" rx="3" fill="#A0522D"/>
+                
+                <!-- Nòng súng -->
+                <rect x="100" y="45" width="12" height="4" rx="2" fill="#696969"/>
+                
+                <!-- Hiệu ứng bắn chân thực hơn -->
+                <circle cx="112" cy="47" r="3" fill="#FF4757" opacity="0.9">
+                    <animate attributeName="opacity" values="0.9;0;0.9" dur="0.2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="115" cy="45" r="2" fill="#FF4757" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;0;0.7" dur="0.3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="118" cy="43" r="1.5" fill="#FF4757" opacity="0.5">
+                    <animate attributeName="opacity" values="0.5;0;0.5" dur="0.4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="120" cy="41" r="1" fill="#FF4757" opacity="0.3">
+                    <animate attributeName="opacity" values="0.3;0;0.3" dur="0.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <!-- Container cho trái tim lớn -->
+        <div class="big-heart-container" id="bigHeartContainer"></div>
+
+        <!-- Text "I love you" -->
+        <div class="love-text" id="loveText">I LOVE YOU</div>
+    </div>
+
+    <script>
+        // Tạo hiệu ứng chấm sáng lấp lánh
+        function createSparkles() {
+            const container = document.querySelector('.container');
+            const sparkleCount = 50;
+
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Tạo các điểm viền trái tim bằng công thức tham số
+        function generateHeartPoints(numPoints) {
+            const points = [];
+            const centerX = 50;
+            const centerY = 50;
+            const scale = 6; // Điều chỉnh kích thước trái tim
+
+            for (let i = 0; i < numPoints; i++) {
+                const t = Math.PI - (i / (numPoints - 1)) * 2 * Math.PI;
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+
+                points.push({
+                    x: centerX + x * scale,
+                    y: centerY - y * scale // Trục y ngược
+                });
+            }
+            return points;
+        }
+
+        // Tạo các vị trí cho trái tim lớn
+        function createBigHeartSlots() {
+            const container = document.getElementById('bigHeartContainer');
+            const slots = [];
+            
+            // Tạo hình trái tim bằng các điểm tham số
+            const heartPoints = generateHeartPoints(40); // 40 điểm viền trái tim
+            heartPoints.forEach((point, index) => {
+                const slot = document.createElement('div');
+                slot.className = 'big-heart-slot';
+                slot.style.left = point.x + '%';
+                slot.style.top = point.y + '%';
+                slot.dataset.index = index;
+                container.appendChild(slot);
+                slots.push(slot);
+            });
+            
+            return slots;
+        }
+
+        // Kiểm tra điểm có nằm trong hình trái tim không - cách đơn giản và chính xác
+        function isInHeartShape(x, y, centerX, centerY, size) {
+            // Chuyển về tọa độ tương đối
+            const relX = (x - centerX) / size;
+            const relY = (y - centerY) / size;
+            
+            // Tạo hình trái tim bằng cách kết hợp hai hình tròn và một hình tam giác
+            const x2 = relX * relX;
+            const y2 = relY * relY;
+            
+            // Phần trên: hai nửa hình tròn
+            if (relY >= 0) {
+                // Hình tròn bên trái
+                const leftCircle = (relX + 0.5) * (relX + 0.5) + (relY - 0.3) * (relY - 0.3);
+                // Hình tròn bên phải
+                const rightCircle = (relX - 0.5) * (relX - 0.5) + (relY - 0.3) * (relY - 0.3);
+                
+                if (leftCircle <= 0.2 || rightCircle <= 0.2) {
+                    return true;
+                }
+            } else {
+                // Phần dưới: hình tam giác tròn
+                const bottom = relY + 0.8;
+                const side = Math.abs(relX) - 0.3;
+                
+                if (bottom >= 0 && side <= 0.1) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        // Tạo trái tim nhỏ bay đến vị trí cụ thể với hiệu ứng chân thực hơn
+        function createSmallHeart(targetSlot, index, totalHearts) {
+            const container = document.querySelector('.container');
+            const heart = document.createElement('div');
+            heart.className = 'small-heart';
+            
+            // Vị trí bắt đầu (từ nòng súng của gấu)
+            const startX = 18; // % từ trái - vị trí nòng súng
+            const startY = 65; // % từ trên - vị trí nòng súng
+            
+            // Vị trí đích (slot trong trái tim lớn)
+            const endX = parseFloat(targetSlot.style.left);
+            const endY = parseFloat(targetSlot.style.top);
+            
+            // Đường cong parabol chân thực hơn với nhiều biến thể
+            const progress = index / totalHearts;
+            const randomOffset = (Math.random() - 0.5) * 20; // Độ lệch ngẫu nhiên
+            const curveIntensity = 30 + Math.random() * 20; // Cường độ đường cong
+            
+            const x = startX + (endX - startX) * progress + randomOffset * Math.sin(progress * Math.PI);
+            const y = startY + (endY - startY) * progress - curveIntensity * Math.sin(progress * Math.PI) + Math.random() * 15 - 7.5;
+            
+            heart.style.left = x + '%';
+            heart.style.top = y + '%';
+            
+            // Thêm hiệu ứng xoay ngẫu nhiên và scale
+            const randomRotation = Math.random() * 720 - 360; // Xoay nhiều hơn
+            const randomScale = 0.8 + Math.random() * 0.4; // Scale ngẫu nhiên
+            heart.style.transform = `rotate(${randomRotation}deg) scale(${randomScale})`;
+            
+            // Thêm hiệu ứng glow cho tim đang bay
+            heart.style.filter = 'drop-shadow(0 0 8px rgba(255, 71, 87, 0.8))';
+            
+            container.appendChild(heart);
+            
+            // Animation bay đến vị trí đích với easing tự nhiên
+            setTimeout(() => {
+                heart.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                heart.style.left = endX + '%';
+                heart.style.top = endY + '%';
+                heart.style.transform = 'rotate(-45deg) scale(0.8)';
+                heart.style.filter = 'drop-shadow(0 0 15px rgba(255, 71, 87, 1))';
+                
+                // Khi đến đích, fill slot và xóa trái tim nhỏ
+                setTimeout(() => {
+                    targetSlot.classList.add('filled');
+                    targetSlot.style.background = '#ff4757';
+                    targetSlot.style.borderRadius = '50%';
+                    targetSlot.style.boxShadow = '0 0 15px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.4)';
+                    targetSlot.style.transform = 'scale(1.2)';
+                    
+                    // Animation scale down
+                    setTimeout(() => {
+                        targetSlot.style.transform = 'scale(1)';
+                    }, 200);
+                    
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 600);
+            }, 150);
+            
+            // Xóa trái tim sau khi animation hoàn thành
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 4000);
+        }
+
+        // Bắn tim theo thứ tự với tốc độ chân thực
+        function shootHearts() {
+            const slots = createBigHeartSlots();
+            const totalHearts = slots.length;
+            const baseDelay = 60; // ms giữa mỗi trái tim - nhanh hơn
+            
+            for (let i = 0; i < totalHearts; i++) {
+                // Thêm độ trễ ngẫu nhiên để tạo cảm giác tự nhiên
+                const randomDelay = baseDelay + Math.random() * 40 - 20;
+                setTimeout(() => {
+                    createSmallHeart(slots[i], i, totalHearts);
+                }, i * baseDelay + randomDelay);
+            }
+            
+            // Hiển thị text "I love you" sau khi tất cả trái tim đã được đặt
+            setTimeout(() => {
+                const loveText = document.getElementById('loveText');
+                loveText.classList.add('show');
+            }, totalHearts * baseDelay + 2500);
+        }
+
+        // Khởi tạo khi trang tải xong
+        window.addEventListener('load', () => {
+            createSparkles();
+            
+            // Bắt đầu bắn tim sau 1 giây
+            setTimeout(() => {
+                shootHearts();
+            }, 1000);
+        });
+
+        // Create a new definition of the bright spot
+        setInterval(() => {
+            const container = document.querySelector('.container');
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = '0s';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            container.appendChild(sparkle);
+            
+            // Glow dot after animation complete
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 5000);
+        }, 2000);
+    </script>
+</body>
+</html>

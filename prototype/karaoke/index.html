@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-music"></i>
+                <h1>Karaoke Player</h1>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Song Selection Screen -->
+        <div id="songSelection" class="song-selection">
+            <div class="selection-header">
+                <h2>Chọn bài hát</h2>
+                <p>Nhấn vào bài hát để bắt đầu</p>
+            </div>
+            <div class="song-grid" id="songGrid">
+                <!-- Songs will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Karaoke Player Screen -->
+        <div id="karaokePlayer" class="karaoke-player hidden">
+            <!-- Player Header -->
+            <div class="player-header">
+                <button id="backToSelection" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Quay lại
+                </button>
+                <div class="song-info">
+                    <h2 id="currentSongTitle">Tên bài hát</h2>
+                    <div class="time-display">
+                        <span id="currentTime">00:00</span>
+                        <span>/</span>
+                        <span id="totalTime">00:00</span>
+                    </div>
+                </div>
+                <div class="player-controls">
+                    <button id="playPauseBtn" class="control-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="stopBtn" class="control-btn">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Lyrics Display - Gộp thành một ô -->
+            <div class="lyrics-container">
+                <div class="lyrics-display">
+                    <h3>🎤 Lời bài hát</h3>
+                    <div class="lyrics-lines" id="lyricsLines">
+                        <!-- 5 dòng lyrics sẽ được tạo động -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Song Info Panel -->
+            <div class="song-info-panel">
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Thời lượng: <span id="songDuration">00:00</span></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-list"></i>
+                    <span>Số câu: <span id="totalSentences">0</span></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Trạng thái: <span id="playerStatus">Sẵn sàng</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen hidden">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Đang tải bài hát...</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

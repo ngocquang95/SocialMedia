@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin: 10px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .feature h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🎵 Karaoke Player</h1>
+        <p>Ứng dụng karaoke được chuyển đổi từ Python sang HTML/CSS/JavaScript với giao diện hiện đại và responsive.</p>
+        
+        <a href="index.html" class="btn">🚀 Mở ứng dụng</a>
+        <a href="README.md" class="btn">📖 Xem hướng dẫn</a>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🎤 Hiển thị lyrics</h3>
+                <p>Highlight từng từ theo thời gian thực</p>
+            </div>
+            <div class="feature">
+                <h3>📱 Responsive</h3>
+                <p>Tương thích với mọi thiết bị</p>
+            </div>
+            <div class="feature">
+                <h3>🌙 Dark Mode</h3>
+                <p>Chuyển đổi theme tùy ý</p>
+            </div>
+            <div class="feature">
+                <h3>🎮 Điều khiển</h3>
+                <p>Play, Pause, Stop dễ dàng</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 10px;">
+            <h3 style="color: #1976d2; margin-bottom: 10px;">📋 Bài hát có sẵn:</h3>
+            <ul style="text-align: left; color: #666;">
+                <li>Anh Thôi Nhân Nhượng (11 câu)</li>
+                <li>Anh Vui (6 câu)</li>
+                <li>Hãy Hát Lên (16 câu)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
